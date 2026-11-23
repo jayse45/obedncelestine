@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestine & Obed — "Capture Our Day" Wedding Sign Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .font-script {
+      font-family: 'Great Vibes', cursive;
+    }
+    .font-script-alt {
+      font-family: 'Alex Brush', cursive;
+    }
+    .font-serif-classic {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .font-serif-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Print styling rules */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-container {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        page-break-inside: avoid;
+      }
+      @page {
+        margin: 0;
+        size: auto;
+      }
+    }
+  </style>
+</head>
+<body class="bg-stone-100 text-stone-900 min-h-screen py-10 px-4 flex flex-col items-center justify-start selection:bg-stone-200">
+
+  <!-- Top Toolbar (Hidden when printing) -->
+  <header class="no-print max-w-4xl w-full mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-sm border border-stone-200">
+    <div>
+      <h1 class="font-serif-display text-lg sm:text-xl font-medium text-stone-800">Wedding Sign Graphic Design</h1>
+      <p class="text-xs text-stone-500 mt-0.5">Inspired by your reference easel photo · Celestine &amp; Obed</p>
+    </div>
+    
+    <div class="flex items-center gap-2.5 flex-wrap">
+      <!-- Style Toggle -->
+      <div class="bg-stone-100 p-1 rounded-xl flex items-center text-xs font-medium border border-stone-200">
+        <button id="btn-theme-ivory" onclick="setTheme('ivory')" class="px-3 py-1.5 rounded-lg bg-white shadow-sm text-stone-800 font-semibold transition-all">Ivory &amp; Gold</button>
+        <button id="btn-theme-dark" onclick="setTheme('dark')" class="px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all">Royal Velvet</button>
+      </div>
+
+      <!-- Size Toggle -->
+      <div class="bg-stone-100 p-1 rounded-xl flex items-center text-xs font-medium border border-stone-200">
+        <button id="btn-size-easel" onclick="setSize('easel')" class="px-3 py-1.5 rounded-lg bg-white shadow-sm text-stone-800 font-semibold transition-all">Easel Stand (18×24)</button>
+        <button id="btn-size-table" onclick="setSize('table')" class="px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all">Table Card (5×7)</button>
+      </div>
+
+      <!-- Print Button -->
+      <button onclick="window.print()" class="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-medium tracking-wider uppercase transition-all shadow-md flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Graphic Design Canvas (The Printable Board) -->
+  <main id="design-board" class="print-container relative bg-white border border-stone-200/80 rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] w-full max-w-[540px] aspect-[3/4] p-10 sm:p-16 flex flex-col items-center justify-between text-center transition-all duration-500 overflow-hidden">
+    
+    <!-- Delicate Outer Frame Inset -->
+    <div id="board-border" class="absolute inset-5 sm:inset-7 border border-[#c8a97e]/40 rounded-xl pointer-events-none transition-all"></div>
+    <div id="board-border-inner" class="absolute inset-[24px] sm:inset-[34px] border border-[#c8a97e]/20 rounded-lg pointer-events-none transition-all"></div>
+
+    <!-- Header Section -->
+    <div class="relative z-10 pt-4 flex flex-col items-center">
+      <!-- Main Calligraphy Headline -->
+      <h2 id="main-headline" class="font-script text-5xl sm:text-7xl lg:text-[82px] text-[#241f1c] leading-[1.05] tracking-wide mb-1 sm:mb-2 transition-all">
+        Capture Our Day!
+      </h2>
+      
+      <!-- Couple Names Subtitle with Heart -->
+      <div class="flex items-center justify-center gap-2 text-stone-700">
+        <span id="sub-names" class="font-serif-classic text-xl sm:text-2xl tracking-[0.15em] font-light text-[#5a4e42] transition-all">
+          Celestine &amp; Obed
+        </span>
+        <svg class="w-3.5 h-3.5 text-[#c8a97e] fill-current opacity-85 transition-transform hover:scale-125" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
+    </div>
+
+    <!-- Center QR Code Section -->
+    <div class="relative z-10 flex flex-col items-center my-4 sm:my-6">
+      <!-- QR Frame Holder -->
+      <div id="qr-frame" class="p-4 sm:p-5 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-stone-100 flex items-center justify-center transition-all">
+        <img 
+          id="qr-img"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fobedncelestine.vercel.app%2F%23camera&margin=0" 
+          alt="Scan QR Code to Open Wedding Disposable Camera"
+          class="w-44 h-44 sm:w-56 sm:h-56 object-contain block transition-all"
+        />
+      </div>
+      
+      <!-- Instant scan prompt badge -->
+      <div id="scan-badge" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-50 border border-[#c8a97e]/30 text-[#856b4d] text-[10px] sm:text-xs font-serif-classic tracking-widest uppercase transition-all">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#c8a97e]"></span>
+        <span>Point Phone Camera to Open</span>
+      </div>
+    </div>
+
+    <!-- Footer Instruction Section -->
+    <div class="relative z-10 pb-3 flex flex-col items-center">
+      <p id="footer-cta" class="font-serif-classic text-xl sm:text-2xl text-[#2a2420] tracking-wide font-normal transition-all">
+        Scan to share your photos
+      </p>
+      
+      <p id="footer-micro" class="font-serif-classic text-xs sm:text-sm text-stone-400 tracking-[0.2em] uppercase mt-1 transition-all">
+        December 5, 2026 · Accra, Ghana
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Help & Download Links Below (Hidden on print) -->
+  <footer class="no-print mt-8 text-center text-xs text-stone-500 max-w-md">
+    <p>Tip: Click <strong>Print / Save PDF</strong> and select <em>"Save as PDF"</em> to create a print-ready vector artwork file for your stationer or printer.</p>
+  </footer>
+
+  <script>
+    function setTheme(theme) {
+      const board = document.getElementById('design-board');
+      const headline = document.getElementById('main-headline');
+      const subNames = document.getElementById('sub-names');
+      const footerCta = document.getElementById('footer-cta');
+      const footerMicro = document.getElementById('footer-micro');
+      const qrFrame = document.getElementById('qr-frame');
+      const boardBorder = document.getElementById('board-border');
+      const boardBorderInner = document.getElementById('board-border-inner');
+      const scanBadge = document.getElementById('scan-badge');
+      const qrImg = document.getElementById('qr-img');
+
+      const btnIvory = document.getElementById('btn-theme-ivory');
+      const btnDark = document.getElementById('btn-theme-dark');
+
+      if (theme === 'dark') {
+        board.className = board.className.replace('bg-white', 'bg-[#141215]').replace('text-stone-900', 'text-[#f5f1eb]');
+        board.style.backgroundColor = '#131215';
+        boardBorder.className = boardBorder.className.replace('border-[#c8a97e]/40', 'border-[#e5c497]/50');
+        boardBorderInner.className = boardBorderInner.className.replace('border-[#c8a97e]/20', 'border-[#e5c497]/25');
+        headline.className = headline.className.replace('text-[#241f1c]', 'text-[#f2ddbe]');
+        subNames.className = subNames.className.replace('text-[#5a4e42]', 'text-[#d6be9c]');
+        footerCta.className = footerCta.className.replace('text-[#2a2420]', 'text-[#ebd5ba]');
+        footerMicro.className = footerMicro.className.replace('text-stone-400', 'text-stone-400/80');
+        qrFrame.className = qrFrame.className.replace('bg-white', 'bg-white').replace('border-stone-100', 'border-[#c8a97e]/40 shadow-[0_0_35px_rgba(200,169,126,0.18)]');
+        scanBadge.className = scanBadge.className.replace('bg-stone-50', 'bg-stone-900/80').replace('text-[#856b4d]', 'text-[#e5c497]').replace('border-[#c8a97e]/30', 'border-[#e5c497]/40');
+
+        btnDark.className = "px-3 py-1.5 rounded-lg bg-stone-900 shadow-sm text-white font-semibold transition-all";
+        btnIvory.className = "px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all";
+      } else {
+        board.style.backgroundColor = '#ffffff';
+        board.className = board.className.replace('bg-[#141215]', 'bg-white').replace('text-[#f5f1eb]', 'text-stone-900');
+        boardBorder.className = boardBorder.className.replace('border-[#e5c497]/50', 'border-[#c8a97e]/40');
+        boardBorderInner.className = boardBorderInner.className.replace('border-[#e5c497]/25', 'border-[#c8a97e]/20');
+        headline.className = headline.className.replace('text-[#f2ddbe]', 'text-[#241f1c]');
+        subNames.className = subNames.className.replace('text-[#d6be9c]', 'text-[#5a4e42]');
+        footerCta.className = footerCta.className.replace('text-[#ebd5ba]', 'text-[#2a2420]');
+        footerMicro.className = footerMicro.className.replace('text-stone-400/80', 'text-stone-400');
+        qrFrame.className = qrFrame.className.replace('border-[#c8a97e]/40 shadow-[0_0_35px_rgba(200,169,126,0.18)]', 'border-stone-100');
+        scanBadge.className = scanBadge.className.replace('bg-stone-900/80', 'bg-stone-50').replace('text-[#e5c497]', 'text-[#856b4d]').replace('border-[#e5c497]/40', 'border-[#c8a97e]/30');
+
+        btnIvory.className = "px-3 py-1.5 rounded-lg bg-white shadow-sm text-stone-800 font-semibold transition-all";
+        btnDark.className = "px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all";
+      }
+    }
+
+    function setSize(size) {
+      const board = document.getElementById('design-board');
+      const headline = document.getElementById('main-headline');
+      const qrImg = document.getElementById('qr-img');
+      const btnEasel = document.getElementById('btn-size-easel');
+      const btnTable = document.getElementById('btn-size-table');
+
+      if (size === 'table') {
+        board.classList.remove('max-w-[540px]', 'aspect-[3/4]');
+        board.classList.add('max-w-[420px]', 'aspect-[5/7]');
+        btnTable.className = "px-3 py-1.5 rounded-lg bg-white shadow-sm text-stone-800 font-semibold transition-all";
+        btnEasel.className = "px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all";
+      } else {
+        board.classList.remove('max-w-[420px]', 'aspect-[5/7]');
+        board.classList.add('max-w-[540px]', 'aspect-[3/4]');
+        btnEasel.className = "px-3 py-1.5 rounded-lg bg-white shadow-sm text-stone-800 font-semibold transition-all";
+        btnTable.className = "px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all";
+      }
+    }
+  </script>
+</body>
+</html>
