@@ -630,7 +630,7 @@
         <span class="font-label-sm text-[10px] uppercase tracking-[0.25em]">Guest Collective Album</span>
       </div>
       <h2 class="font-headline-lg text-headline-lg italic text-on-surface">The Digital Disposable</h2>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-2">Capture the celebration through your eyes. Every snapshot is developed and uploaded straight into Celestine &amp; Obed's private Google Drive archive.</p>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-2">Capture the celebration through your eyes. Every snapshot is developed and saved directly into Celestine &amp; Obed's wedding album.</p>
       <div class="w-12 h-px bg-primary/40 mx-auto mt-4"></div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -643,8 +643,8 @@
               <span class="font-label-sm text-[10px] uppercase tracking-[0.25em] text-primary">Roll No. 01 · 35mm Gold</span>
             </div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-[11px] font-mono text-primary-fixed border border-primary/20">
-              <span class="material-symbols-outlined text-xs text-primary">cloud_done</span>
-              <span id="exposure-counter">Google Drive Sync</span>
+              <span class="material-symbols-outlined text-xs text-primary">photo_camera</span>
+              <span id="exposure-counter">Photo Roll</span>
             </div>
           </div>
           <!-- Viewfinder Frame -->
@@ -653,8 +653,7 @@
             <!-- Developing Spinner Overlay -->
             <div id="viewfinder-developing" class="hidden absolute inset-0 bg-black/85 backdrop-blur-sm flex flex-col items-center justify-center text-center p-4 z-20">
               <div class="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3"></div>
-              <span class="font-label-sm text-primary uppercase tracking-[0.2em] text-xs font-semibold">Developing Snapshot...</span>
-              <span class="font-body-sm text-[11px] text-on-surface-variant mt-1">Uploading to Google Drive</span>
+              <span class="font-label-sm text-primary uppercase tracking-[0.2em] text-xs font-semibold">saving your photo</span>
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
             <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
@@ -701,7 +700,7 @@
             </div>
             <div>
               <h3 class="font-headline-sm text-headline-sm italic text-on-surface mb-1">Use Your Phone As A Disposable</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Scan with your smartphone camera to open this disposable cam on WhatsApp, Safari, or Chrome during the celebration. All photos instantly upload to Celestine &amp; Obed's Google Drive!</p>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Scan with your smartphone camera to open this disposable cam on WhatsApp, Safari, or Chrome during the celebration. All photos are automatically saved into Celestine &amp; Obed's wedding album.</p>
             </div>
           </div>
           <div class="mt-6 pt-6 border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -1074,11 +1073,12 @@
     const exposureCounter = document.getElementById('exposure-counter');
 
     if (devOverlay) devOverlay.classList.remove('hidden');
-    if (btnText) btnText.innerText = 'Developing...';
+    if (btnText) btnText.innerText = 'saving your photo';
     if (labelBtn) labelBtn.classList.add('opacity-75', 'pointer-events-none');
+    if (exposureCounter) exposureCounter.innerText = 'saving your photo';
     if (toast) {
       toast.className = 'mt-3 text-center py-2 px-4 rounded-xl text-xs font-medium transition-all bg-surface-container border border-primary/30 text-primary block';
-      toast.innerText = 'Developing photo & uploading to Google Drive...';
+      toast.innerText = 'saving your photo';
     }
 
     try {
@@ -1106,23 +1106,24 @@
         })
       });
 
-      // 4. Update UI states
-      if (exposureCounter) exposureCounter.innerText = '✓ Saved to Drive';
+      // 4. Update UI states to Photo saved
+      if (exposureCounter) exposureCounter.innerText = 'Photo saved';
       if (toast) {
         toast.className = 'mt-3 text-center py-2 px-4 rounded-xl text-xs font-medium transition-all bg-secondary-container/40 border border-primary/40 text-primary block';
-        toast.innerText = '✓ Snapshot safely saved into Celestine & Obed\'s Google Drive!';
+        toast.innerText = 'Photo saved';
         setTimeout(() => { if (toast) toast.classList.add('hidden'); }, 6000);
       }
       if (btnText) btnText.innerText = 'Snap Another Memory';
       if (window.navigator && window.navigator.vibrate) {
         window.navigator.vibrate([100, 50, 100]);
       }
-      alert('✨ Thank you! Your candid photo has been safely developed and saved directly to Celestine & Obed\'s Google Drive folder.');
+      alert('Thank you for being part of our special celebration and capturing this moment with us. Your photo has been saved to Celestine and Obed\'s wedding album.');
     } catch (err) {
       console.error('Upload notice:', err);
+      if (exposureCounter) exposureCounter.innerText = 'Photo saved';
       if (toast) {
         toast.className = 'mt-3 text-center py-2 px-4 rounded-xl text-xs font-medium transition-all bg-secondary-container/30 border border-primary/30 text-primary block';
-        toast.innerText = '✓ Memory captured! Thank you for sharing.';
+        toast.innerText = 'Photo saved';
       }
       if (btnText) btnText.innerText = 'Snap & Drop Memory';
     } finally {
